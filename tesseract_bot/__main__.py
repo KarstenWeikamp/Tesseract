@@ -10,7 +10,7 @@ import tesseract_bot.utils as utils
 ## Set globals and intents
 load_dotenv()
 TOKEN = os.getenv('TESSERACT_TOKEN')
-version = "0.0.1"
+version = "0.0.2"
 
 utils.loggingSetup(log.INFO)
 
