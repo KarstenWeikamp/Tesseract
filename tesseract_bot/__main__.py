@@ -75,7 +75,7 @@ async def add(ctx,name,url):
 async def remove(ctx,name):
     if name in snoezeldict:
         del snoezeldict[name]
-        ctx.send("Removed snoezel {name}, goodbye {name}!😭")
+        await ctx.send("Removed snoezel {name}, goodbye {name}!😭")
 
 @snoezel.command(brief='[<name>] Summons a specific snoezel!')
 async def invoke(ctx,name):
