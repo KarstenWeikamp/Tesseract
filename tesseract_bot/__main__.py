@@ -51,7 +51,7 @@ async def on_raw_reaction_add(payload):
 
 @bot.command()
 async def version(ctx):
-    await ctx.send("This is Tesseract version ** {0} ** created by Bloxx".format("0.0.1"))
+    await ctx.send("This is Tesseract version **" + semver +"** created by Bloxx")
 
 ##snoezel command group
 @bot.group(invoke_without_command=True,
@@ -84,8 +84,15 @@ async def invoke(ctx,name):
     else:
         await ctx.send("No such snoezel found! :anguished:")
 
-
-
-
+@snoezel.command(brief='Lists all named snoezels')
+async def listnames(ctx):
+    snoezellist = "List of snoezels:\n"
+    snoezelkeys = list(snoezeldict.keys())
+    i = 1
+    for name in snoezelkeys:
+        if await utils.startsWithLetter(name):
+            snoezellist = snoezellist + "[" + str(i) + "] " + name + "\n||" + snoezeldict[name] + "||\n"
+            i = i + 1
+    await ctx.send(snoezellist)
 
 bot.run(TOKEN)

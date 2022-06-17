@@ -50,3 +50,6 @@ async def saveSnoezeldict(snoezeldict):
 
 async def randintsr():
     return str(random.randrange(0,99999))
+
+async def startsWithLetter(text):
+    return re.search("^[a-zA-Z\u00c4\u00e4\u00d6\u00f6\u00dc\u00fc].*",text)
