@@ -79,9 +79,9 @@ async def remove(ctx,name):
 @snoezel.command(brief='[<name>] Summons a specific snoezel!')
 async def invoke(ctx,name):
     if name in snoezeldict:
-        ctx.send(snoezeldict[name])
+        await ctx.send(snoezeldict[name])
     else:
-        ctx.send("No such snoezel found! :anguished:")
+        await ctx.send("No such snoezel found! :anguished:")
 
 
 
