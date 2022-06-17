@@ -32,6 +32,10 @@ bot = commands.Bot(command_prefix='+', intents=intents,help_command=PrettyHelp(s
 async def on_ready():
     log.info("Starting Tesseract!")
     log.info("Logging in as {bot}!".format(bot=bot.user))
+    if snoezeldict != {}:
+        log.info("Opened snoezel.json")
+    else:
+        log.warn("Could not open snoezel.json")
     log.info("We joined the following Servers:")
     async for guild in bot.fetch_guilds(limit=150):
         log.info("\t{0:<30} {1:<18}".format(guild.name, guild.id))
