@@ -3,6 +3,7 @@ import os
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
+from pretty_help import PrettyHelp
 import logging as log
 import tesseract_bot.utils as utils
 
@@ -22,7 +23,7 @@ intents.guild_reactions = True
 snoezeldict = utils.openSnoezelDict()
 
 
-bot = commands.Bot(command_prefix='+', intents=intents)
+bot = commands.Bot(command_prefix='+', intents=intents,help_command=PrettyHelp(show_index=False))
 
 
 
@@ -59,7 +60,7 @@ async def snoezel(ctx):
     snoezelpic = await utils.getRandomSnoezel(snoezeldict)
     await ctx.send(snoezelpic)
 
-@snoezel.command()
+@snoezel.command(brief='[<name>,<url>] Adds new named snoezel')
 async def add(ctx,name,url):
     if await utils.matchURL(url):
         log.debug("Added image to snozeldict")
@@ -69,13 +70,13 @@ async def add(ctx,name,url):
     else:
         await ctx.send("This doesn't seem to be a image url 😨")
 
-@snoezel.command()
+@snoezel.command(brief='[<name>] Removes snoezel from list!')
 async def remove(ctx,name):
     if name in snoezeldict:
         del snoezeldict[name]
         ctx.send("Removed snoezel {name}, goodbye {name}!😭")
 
-@snoezel.command()
+@snoezel.command(brief='[<name>] Summons a specific snoezel!')
 async def invoke(ctx,name):
     if name in snoezeldict:
         ctx.send(snoezeldict[name])
