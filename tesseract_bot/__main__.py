@@ -28,7 +28,7 @@ bot = commands.Bot(command_prefix='+', intents=intents,help_command=PrettyHelp(s
 
 
 ##Startup
-@bot.event()
+@bot.event
 async def on_ready():
     log.info("Starting Tesseract!")
     log.info("Logging in as {bot}!".format(bot=bot.user))
@@ -36,7 +36,7 @@ async def on_ready():
     async for guild in bot.fetch_guilds(limit=150):
         log.info("\t{0:<30} {1:<18}".format(guild.name, guild.id))
 
-@bot.event()
+@bot.event
 async def on_raw_reaction_add(payload):
     if payload.emoji.name == "➕":
         msg = await bot.get_channel(payload.channel_id).fetch_message(payload.message_id)
