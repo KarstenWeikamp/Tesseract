@@ -10,7 +10,7 @@ import tesseract_bot.utils as utils
 ## Set globals and intents
 load_dotenv()
 TOKEN = os.getenv('TESSERACT_TOKEN')
-version = "0.0.2"
+semver = "0.0.2"
 
 utils.loggingSetup(log.INFO)
 
@@ -35,6 +35,7 @@ async def on_ready():
     log.info("We joined the following Servers:")
     async for guild in bot.fetch_guilds(limit=150):
         log.info("\t{0:<30} {1:<18}".format(guild.name, guild.id))
+    await bot.change_presence(activity=discord.Game(name="v{0} +help".format(semver)))
 
 @bot.event
 async def on_raw_reaction_add(payload):
