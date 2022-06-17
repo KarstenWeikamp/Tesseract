@@ -52,7 +52,9 @@ async def version(ctx):
     await ctx.send("This is Tesseract version ** {0} ** created by Bloxx".format("0.0.1"))
 
 ##snoezel command group
-@bot.group(invoke_winthout_command=True)
+@bot.group(invoke_without_command=True,
+            brief='Main commands for all things snoezel. Has subcommands!',
+            description='Main commands for all things snoezel.\n Summons a mighty snoezel when invoked alone!')
 async def snoezel(ctx):
     snoezelpic = await utils.getRandomSnoezel(snoezeldict)
     await ctx.send(snoezelpic)
