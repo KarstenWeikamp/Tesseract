@@ -11,7 +11,7 @@ def loggingSetup(logLevel):
         format='[%(asctime)s]-[%(levelname)s]:%(message)s',
         datefmt='%d-%m %H:%M:%S',
         handlers=[
-            log.FileHandler("tesseract{0}.log".format(datetime.now().strftime("%d-%m-%Y_%H-%M-%S"))),
+            log.FileHandler("./logs/tesseract{0}.log".format(datetime.now().strftime("%d-%m-%Y_%H-%M-%S"))),
             log.StreamHandler()
             ]
         )
